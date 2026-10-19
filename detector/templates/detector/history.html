@@ -1,0 +1,62 @@
+{% extends 'detector/base.html' %}
+{% block title %}History | FakeGuard AI{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4"><div>
+    <span class="eyebrow">RECORDS</span>
+    <h1 class="display-6 fw-bold">Analysis history</h1>
+    <p class="text-secondary mb-0">Previous checks saved in your local SQLite database.</p>
+</div>
+ <a href="{% url 'home' %}" class="btn btn-primary">+ New analysis</a>
+</div>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <span>Total analyses</span>
+            <strong>{{ total }}</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <span>Predicted fake</span>
+            <strong class="text-danger">{{ fake_count }}</strong>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <span>Predicted real</span>
+            <strong class="text-success">{{ real_count }}</strong>
+        </div>
+    </div>
+</div>
+<div class="panel">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Followers</th>
+                    <th>Following</th>
+                    <th>Posts</th>
+                    <th>Prediction</th>
+                    <th>Risk score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>{% for item in records %}
+                <tr>
+                    <td class="fw-semibold">@{{ item.username }}</td>
+                    <td>{{ item.followers }}</td>
+                    <td>{{ item.following }}</td>
+                    <td>{{ item.posts }}</td>
+                    <td>
+                        <span class="badge {% if item.prediction == 'Fake' %}text-bg-danger{% else %}text-bg-success{% endif %}">{{ item.prediction }}</span>
+                    </td>
+                    <td>{{ item.risk_score }}%</td>
+                    <td class="text-secondary small">{{ item.created_at|date:"d M Y H:i" }}</td>
+                </tr>{% empty %}<tr>
+                    <td colspan="7" class="text-center py-5 text-secondary">No records yet. <a href="{% url 'home' %}">Analyze an account</a>.</td>
+                </tr>{% endfor %}</tbody>
+            </table>
+        </div>
+    </div>
+    {% endblock %}

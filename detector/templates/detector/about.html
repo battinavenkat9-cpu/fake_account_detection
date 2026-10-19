@@ -1,0 +1,31 @@
+{% extends 'detector/base.html' %}
+{% block title %}About | FakeGuard AI{% endblock %}
+{% block content %}<span class="eyebrow">PROJECT INFORMATION</span>
+<h1 class="display-6 fw-bold mb-3">AI-Powered Fake Account Detection on Social Media</h1>
+<p class="lead text-secondary">A student project demonstrating how machine learning can examine account-profile and activity signals to classify suspicious accounts.</p>
+<div class="panel p-4 mb-4">
+    <h2 class="h4">Project team</h2>
+    <p class="text-secondary">Indira Institute of Technology & Science · Department of Computer Science and Engineering · 2022–2026</p>
+    <ul class="team-list">
+        <li>Cheekatipalli Pooja — 227Z1A4311</li>
+        <li>Banka Narendra Kumar Reddy — 227Z1A4308</li>
+        <li><strong>Battina Venkata Subbaiah — 227Z1A4309</strong></li>
+        <li>Bavannagari Ravi Kumar — 227Z1A4310</li>
+        <li>Degala Hemanth Kumar — 227Z1A4312</li>
+    </ul>
+    <p class="mb-0">Project guide: Mr. K Surendra Reddy (M.Tech), Associate Professor.</p>
+</div>
+<div class="panel p-4 mb-4">
+    <h2 class="h4">Modules demonstrated</h2>
+    <ol>
+        <li>Account data input</li>
+        <li>Data preprocessing and feature extraction</li>
+        <li>Machine-learning classification</li>
+        <li>Result and risk-score display</li>
+        <li>History and summary statistics</li>
+    </ol>
+</div>
+<div class="alert alert-warning">
+    <strong>Scope and limitations:</strong> The presentation describes a broader system with social-media data collection, real-time processing and platform actions. This local implementation does not connect to Instagram, Facebook or X, scrape profiles, block accounts, or use a real labeled dataset. It uses manually entered values and generated training examples. Replace the demo data with a properly licensed, representative labeled dataset and evaluate false positives/negatives before any real-world use.
+</div>
+{% endblock %}
